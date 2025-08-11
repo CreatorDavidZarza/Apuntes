@@ -1,0 +1,240 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{amssymb}
+%configuracion de la geometria de la pagina 
+\geometry{a4paper, margin=1in}
+
+\setlength{\parskip}{1em}
+
+\title{\textbf{Resolucion de Limites y sus Indetermiaciones}}
+\author{Zarza David}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+%------ INICIO DEL EJEMPLO 1 -------
+\section{Ejemplo 1: Indeterminacion $\frac{0}{0}$}
+
+Consideremos el siguiente limite: 
+
+$$\lim_{x \to 2^+} \frac{\sqrt{x^2 - 4 }}{x -2} = \frac{\sqrt{2-2}}{2^4-4}=\frac{0}{0}$$
+
+Para resolver esta indeterminacion, podemos aplicar caso de factoreo, Ruffini, Multiplicar o dividir por el conjugado.
+\subsection{Tipos de factoreo mas frecuentes en limites}
+
+\begin{itemize}
+    \item Factor comun: $6x^2 + 9x  = 3x(2x + 3)$ Sacamos el numero o letra que aparece en todos los terminos.
+    \item Diferencia de cuadrados: \textbf{Reconocer $a^2 - b^2 = (a-b)(a+b)$} ejemplo, $x^2 - 9 = (x-3)(x+3) $, aqui $a = x,\ y \ b = 3 $.
+    \item Trinomio cuadrado perfecto: \textbf{Reconocer $a^2 + 2ab + b^2 = (a+b)^2$} ejemplo, $x^2 + 6x + 9 = (x+3)^2$, aqui $a = x ,\ y \ b= 3$.
+    \item Trinomio de la forma $ax^2 + bx + c$: \textbf{Buscas dos numeros que sumen b y multipliquen c}, ejemplo, $x^2 - 5x + 6 = (x-2)(x-3)$, porque $-2 + (-3) = -5 \ y \ (-2).(-3)=6$.
+    \item Sacar un signo menos (cuando conviene): $-x^2 + 4x - 3 = \ -(x^2-4x+3)= \ -(x-1)(x-3)$. 
+\end{itemize}
+Continuando de resolver el ejemplo anterior 
+
+$\lim_{x \to 2^+} \frac{\sqrt{x^2 - 4 }}{x -2} . \frac{\sqrt{x-2 }}{\sqrt{x -2}} = \frac{\sqrt{x-2}^2}{(x^2-4).\sqrt{x-2}}= $(aplicamos diferencia de cuadrados y cancelamos la raiz elevada al cuadrado)
+$$ \lim_{x \to 2^+} \frac{x-2}{(x-2)(x+2)\sqrt{x-2}} = \lim_{x \to 2^+} \frac{1}{(2+2)\sqrt{2-2}} = \frac{1}{0} = \infty$$ 
+\subsection{Operaciones con Infinito}
+\begin{itemize}
+    \item $\infty \pm k = \infty $
+    \item $\infty . k = \infty $ si $k \neq 0 $
+    \item $\frac{0}{k} = 0 $
+    \item $\frac{k}{0} = \infty $
+    \item $\frac{0}{\infty} = 0 $
+    \item $\frac{k}{\infty} = 0$
+    \item $\frac{\infty}{0} = \infty$ 
+\end{itemize} 
+\subsection{Limites con sen y tg}
+
+\begin{itemize}
+    \item $$\lim_{x \to 0} \frac{\sen x}{x} = 1$$ \ $$\sen x \sim x $$  \center el simbolo en medio de sen x y x significa que son equivalentes
+    \item $$\lim_{x \to 0} \frac{\tan x}{x} = 1$$ \ $$\tan x \sim x $$ 
+\end{itemize}
+\begin{center}
+$$\lim_{x \to 0} \frac{\sen^3 (2x) - x}{\tan^3(3x) + \sqrt{x}} =  $$ \ 
+$$\lim_{x \to 0} \frac{(2x)^3 - x}{(3x)^2 + \sqrt{x}} = \frac{0}{0}$$  si aplicamos limite a esta funcion, obtenemos $\frac{0}{0}$, asi que trabajaremos sobre esto.
+$$\lim_{x \to 0} \frac{8x^3 - x}{9x^2 + \sqrt{x}}$$   recordemos la operacion de dividir y Multiplicar por el conjugado 
+$$\lim_{x \to 0} \frac{8x^3 - x}{9x^2 + \sqrt{x}} . \frac{ 9x^2 - \sqrt{x}}{9x^2 - \sqrt{x}} = \frac{(8x^3 - x). (9x^2 - \sqrt{x})}{(9x^2)^2 - \sqrt{x}^2}$$ cancelamos la raiz y escribimos el resultado del 9 elevado al cuadrado dos veces
+$$\lim_{x \to 0} \frac{(8x^3 - x). (9x^2 - \sqrt{x})}{81x^4 - x} = \lim_{x \to 0} \frac{x(8x^2 - 1). (9x^2 - \sqrt{x})}{x(81x^3 - 1)}$$ simplificamos las x que sacamos como factor comun y aplicamos limite 
+$$\lim_{x \to 0} \frac{(80^2x0 - 1). (9^2x0 - \sqrt{0})}{(81^3x0 - 1)} = \frac{0}{-1} = 0$$
+\end{center}
+\subsection{Limites de $\infty - \infty$}
+$$ \lim_{x \to \infty} (\sqrt{x^2 +2} - x) = \infty - \infty $$
+Para resolver este tipo de indeterminacion, multiplicamos y dividimos por el conjugado
+$$ \lim_{x \to \infty } (\sqrt{x^2 +2} - x) . \frac{\sqrt{x^2+2}+x}{\sqrt{x^2+2}+x} $$
+$$ \lim_{x \to \infty} \frac{\sqrt{x+2}^2-x^2}{\sqrt{x^2+2}+x} = \frac{\infty}{\infty}$$
+$$\lim_{x \to \infty} \frac{x^2+2 - x^2}{\sqrt{x^2+2}+2} = \lim_{x \to \infty} \frac{2}{\sqrt{x^2+2}+2} = \frac{2}{\infty} = 0$$
+\newpage
+Pasamos a otro ejemplo del mismo tipo:
+$$ \lim_{x \to 1} \frac{1}{x-1} - \frac{x}{x^2-1} = \infty - \infty \ $$
+Lo primero es encontrar un comun denominador para las dos fracciones. Factorizamos la segunda ecuacion
+$$ \lim_{x \to 1} \left(\frac{1}{x-1} - \frac{x}{(x-1)(x+1)}\right) $$ 
+Ahora tenemos un comun denominador, que es $(x-1)(x+1)$, y podemos escribir la ecuacion como:
+$$ \lim_{ x \to 1 } \left(\frac{1x(x+1)}{(x-1)(x+1)} - \frac{x}{(x-1)(x+1)} \right)$$
+Al tener el mismo denominador, podemos restar los numeradores: 
+$$ \lim_{x \to 1} \frac{x+1-x}{(x-1)(x+1) } \text \ remplazamos \ el \ limite \ y \ nos \ queda: \ \frac{1}{0}= \infty$$
+
+Vamos a ver otro ejemplo pero mas complejo: 
+
+$$ lim_{x \to \infty} \frac{\sqrt[3]{9x^8+6x^3-3}}{2x^3-x^2+9x} = \frac{\infty}{\infty}$$
+Para resolver esta indeterminacion, dividimos el numerador y el denominador por la mayor potencia de x que aparezca, que en este caso es $x^3$
+$$ \lim_{x \to \infty} \frac{\frac{\sqrt[3]{9x^3+6x^3-3}}{x^3}}{\frac{2x^3}{x^3}-\frac{x^2}{x^3}+\frac{9x}{x^3}}  $$
+Un pequeño detalle es que, $\frac{x^2}{x^3} $ \ queda como $\frac{1}{x}$
+Siguiendo con la simplificacion, cancalamos las x que podamos y luego nos queda: 
+$$ \lim_{x \to \infty} \frac{\sqrt[3]{\frac{9x^3}{x^9}+\frac{6x^3}{x^9}-\frac{3}{x^9}}}{2-\frac{1}{x}-\frac{9}{x^2}}$$
+$$ \lim_{x \to \infty} \frac{\sqrt{\frac{9}{x}+\frac{6}{x^6}-\frac{3}{x^9}}}{2-\frac{1}{x}+\frac{9}{x^2}} = \frac{0}{2} = 0$$
+
+\section{Indeterminacion del tipo $1^\infty$}
+Para resolver este tipo de indeterminaciones, necesitamos aplicar un metodo, el cual es el siguiente: 
+$$ \lim_{x \to \infty} \left( 1+ \frac{1}{x} \right)^x = e $$
+A continuacion, resolveremos un ejercicio: 
+$$ lim_{x \to \infty} \left( 1- \frac{3}{5x}\right)^{2x-1} $$
+Pasos algebraicos:
+Divido por 3 y la resta la pasamos abajo: 
+
+$$ \lim_{x \to \infty} \left( 1+ \frac{1}{-\frac{5x}{3}}\right)^{-\frac{5x}{3}.(-\frac{3}{5x}).(2x-1)}$$
+Lo que hicimos fue elevar la base a la potencia porque necesitamos que sean iguales, y luego la multiplicamos por su inverso para que se cancele y no cambie nada de la expresion orginal.
+\newpage
+Vamos a aplicar una propiedad de potencias, $(a^p)^q = a^{p.q}$ 
+
+$$ \lim_{x \to \infty} \left[\left(1+\frac{1}{-\frac{5x}{3}}^{-\frac{5x}{3}}\right)^{-\frac{3}{5x}.(2x-1)}\right] = $$
+
+Como ya tenemos la base y la potencia iguales, podemos aplicar el limite: 
+
+$$ e^{\lim_{x \to \infty}} \frac{-6x+3}{5x}= \frac{\infty}{\infty}$$
+
+Recordemos que para resolver este tipo de indeterminaciones, utilizamos dividir todos los miembros por la mayor potencia de x que aparezca.
+
+$$ e^{ \lim_{x \to \infty}} \frac{-6+\frac{3}{x}}{5} = e^{-\frac{6}{5}}$$
+
+Vamos con otro caso del mismo tipo:
+
+$$ \lim_{x \to \infty} \left(\frac{2x-1}{2x-3}\right)^{3x+2} $$
+
+En este caso, vamos a sumar y restar 3 en el numerador para que nos quede una expresion de la forma $1 + \frac{1}{x}$ 
+
+$$ \lim_{x \to \infty} \left(\frac{2x-3+3-1}{2x-3}\right)^{3x+2}$$
+
+El siguiente paso es separar la fraccion en dos partes: 
+
+$$ \lim_{x \to \infty} \left(\frac{2x-3}{2x-3} + \frac{2}{2x-3}\right)$$ 
+
+Como se puede observar, podemos simplificar la primera parte de la fraccion, y nos queda 1 y en la segunda parte tendremos que dividir por 2 para hallar el 1 que nos falta.
+
+$$ \lim_{ x \to \infty} \left(1+\frac{\frac{2}{2}}{\frac{2x-3}{2}}\right)^{3x+2} = \lim_{x \to \infty } \left(1+ \frac{1}{\frac{2x-3}{2}}\right)^{3x+2}$$
+
+Ahora es solamente aplicar los pasos que ya vimos en el anterior ejemplo
+
+$$ \lim_{x \to \infty} \left(1+ \frac{1}{\frac{2x-3}{2}}\right)^{\frac{2x-3}{2}.\frac{2}{2x-3}.(3x+2)} $$
+
+$$ \lim_{x \to \infty} \left[\left(1+\frac{1}{\frac{2x-3}{2}}^{\frac{2x-3}{2}}\right)\right]^{\frac{6x+4}{2x-3}} $$
+
+$$ e^{\lim_{x \to \infty} \frac{6x+4}{2x-3}} = \frac{\infty}{\infty} \ \  \ e^{\lim_{x \to \infty} \frac{6+\frac{4}{x}}{2-\frac{3}{x}}} = e^{\frac{6}{2}} = e^3$$
+
+\newpage
+\begin{center}
+    \title{\LARGE\color{red}\textbf{Asintotas y Continuidad}}
+\end{center}
+\section{Tipos de Asintotas}
+\begin{itemize}
+    \item Para hallar la asintota horizontal, utilizaremos: 
+     $$  \lim_{X \to \infty} f(x) = k ; k \ \epsilon \Re  $$
+    \item Para hallar la asintota vertical, utilizaremos:
+    $$ \lim_{x \to a} f(x) = \infty$$
+    \item Para hallar la asintota oblicua, utilizaremos:
+    $$ y = px + q$$ $$ P = \lim_{x \to \infty} \frac{f(x)}{x}$$ $$ Q= \lim_{x \to p}\left(f(x)- Px\right) $$
+\end{itemize}
+
+Las asintotas verticales no estan definidas en un punto, las Asintotas horizontales tiene valor de la ordenada, otro dato
+de las asintotas horizontal es que si existen, significa que no existe asintota oblicua.
+
+$$ Hallar \ las \ asintotas \ (1a) \ f(x) = \frac{3-x}{x^2-9}$$
+Analizamos A.H primero: 
+$$ \lim_{x \to \infty} \frac{3-x}{x^2 - 9} = \frac{\infty}{\infty}$$
+dividimos por la x de mayor potencia
+$$ \lim_{x \to \infty} \frac{\frac{3}{x^2}-\frac{x}{x^2}}{\frac{x^2}{x^2}-\frac{9x}{x^2}} = \lim_{x \to \infty}\frac{0-0}{1-0} = 0$$
+
+Entonces tenemos nuestra A.H que se escribe, $ A.H: \ \ y=0$
+
+Para las asintotas verticales, voy a buscar aquellos valores que anulen el denominador
+
+Analisis de la A.V:
+En este caso, lo que anula el denominador son el 3 y el -3. 
+
+y se los llama como "Posibles Asintotas Verticales (A.V)".
+
+$$ \lim_{x \to 3} \frac{3-x}{x^2-9} = \frac{0}{0}$$
+$$ \lim_{x \to 3} \frac{-(x-3)}{(x-3)(x+3)}$$
+
+Sacamos Factor comun -1 para poder cancelar la operacion x-3
+
+$$ \lim_{x \to 3 } \frac{-1}{x+3} = \frac{-1}{6} $$
+
+$\therefore$ $\nexists$ A.V en $x=3$ , si analizamos x = -3 obtendremos: $\therefore$$\exists$ A.V en x= -3
+
+\newpage
+
+\begin{center}
+\begin{figure}[h!]
+    \center
+    \begin{tikzpicture}[scale=1.2]
+    \begin{axis}[xmin=-5,xmax=5,ymin=-5,ymax=5,axis x line=center,axis y line=center,xlabel=$x$,ylabel=$y$]
+        \addplot[red!80!white,thick,samples=200,domain=-3:3]{(3-x)/(x^2-9)};
+    \end{axis}   
+    \end{tikzpicture}
+    \caption{Funci\'on $f(x) = \frac{3-x}{x^2-9}$}
+\end{figure}
+\end{center}
+
+Analizaremos otra funcion: 
+
+$$ f(x)= \frac{x^2+2}{x-2}$$
+
+A.H:
+$$ \lim_{x \to \infty} \frac{\frac{x^2}{x^2}+\frac{2x}{x^2}}{\frac{x}{x^2}-\frac{2x}{x^2}}= \frac{1+0}{0+0} = \infty$$
+$\therefore$ \ $\nexists$ A.H
+
+Entonces si existe A.O
+
+Analizaremos la A.V:
+
+$$ \lim_{x \to 2} \frac{x^2+2x}{x-2x} = \frac{8}{0} = \infty $$ $\therefore$ \ $\exists$ A.V en x = 2
+
+Analizamos la A.O:
+
+$$ P = \lim_{x \to \infty} \frac{\frac{x^2+2x}{x-2}}{\frac{x}{1}} $$
+realizamos extremo por extremo, nos quedara: 
+$$ \lim_{x \to \infty} \frac{x^2+2x}{x^2-2x} = \frac{\infty}{\infty}$$
+
+Un dato muy importante es que cuando tenemos el numerador y el denominador del mismo grado 
+el limite nos dara"1"
+$P=1$
+
+$$Q= \lim_{x \to \infty} \left(\frac{x^2+2x}{x-2}-1.x\right)= \lim_{x \to \infty} \frac{x^2+2x-x^2+2x}{x-2}= \lim_{x \to \infty} \frac{4x}{x-2} = \frac{\infty}{\infty}$$
+
+Salvando la indeterminacion,como son del mismo grado, nos quedara:
+$$ \lim_{x \to \infty} \frac{\frac{4x}{x}}{\frac{x}{x}-\frac{2}{x}} = \lim_{x \to \infty} = 4$$ 
+
+\begin{center}
+\begin{figure}[h!]
+    \center
+    \begin{tikzpicture}[scale=1.2]
+    \begin{axis}[xmin=-10,xmax=10,ymin=-10,ymax=20,axis x line=center,axis y line=center,xlabel=$x$,ylabel=$y$]
+        \addplot[red!80!white,thick,samples=200,domain=-3:1.9]{(x^2+2*x)/(x-2)};
+        \addplot[red!80!white,thick,samples=200,domain=2.1:3]{(x^2+2*x)/(x-2)};
+    \end{axis}   
+    \end{tikzpicture}
+    \caption{Funci\'on $f(x) = \frac{x^2+2x}{x-2}$}
+\end{figure}
+\end{center}
+
+
+\end{document}
